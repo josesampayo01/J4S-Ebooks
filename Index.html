@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J4S Music Records | Beats & Libros</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Lindos y Pastel */
+        :root {
+            --primary-color: #ff9a9e; 
+            --secondary-color: #fecfef; 
+            --bg-color: #fffafb; 
+            --text-color: #5c4b51; 
+            --card-bg: #ffffff;
+            --accent-color: #a1c4fd; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navegación */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(255, 154, 158, 0.15);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .logo span { color: var(--primary-color); }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover { color: var(--primary-color); }
+
+        /* Sección Hero */
+        .hero {
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            margin-bottom: 40px;
+            color: #ffffff;
+            box-shadow: 0 10px 20px rgba(161, 196, 253, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* Botones */
+        .btn {
+            background-color: #ffffff;
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 154, 158, 0.3);
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Secciones */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 60px 0 40px;
+            color: var(--primary-color);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 0 5%;
+            margin-bottom: 80px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 25px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px dashed var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 35px rgba(255, 154, 158, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card h3 { margin-bottom: 10px; color: var(--text-color); }
+        .card p.price { color: var(--accent-color); font-size: 1.3rem; font-weight: 700; margin-bottom: 15px; }
+        .card p.desc { font-size: 0.9rem; color: #888; margin-bottom: 15px; }
+
+        /* Botones de Redes Sociales */
+        .social-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 0 5%;
+            margin-bottom: 50px;
+        }
+
+        .social-btn {
+            background-color: white;
+            color: var(--text-color);
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 2px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">J4S <span>RECORDS</span> 🎧✨</a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#beats">Beats</a></li>
+                <li><a href="#libros">Libros</a></li>
+                <li><a href="#redes">Nuestras Redes</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>El Sonido de tus Sueños ☁️</h1>
+        <p>J4S Music Records. Beats mágicos y libros que inspiran tu creatividad.</p>
+        <a href="#beats" class="btn">Explorar Beats 🎵</a>
+        <a href="#redes" class="btn" style="background: transparent; border: 2px solid white; color: white; margin-left: 10px;">Nuestras Redes 📱</a>
+    </section>
+
+    <h2 id="beats" class="section-title">☁️ Tienda de Beats ☁️</h2>
+    <div class="grid-container">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=500" alt="Detroit Trap">
+            <h3>Detroit Trap Vibes</h3>
+            <p class="desc">Bajos pesados y melodías oscuras.</p>
+            <p class="price">$25.00 USD</p>
+            <button class="btn">Comprar Licencia 💖</button>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=500" alt="Reggaetón Flow">
+            <h3>Reggaetón Flow 2026</h3>
+            <p class="desc">El ritmo urbano para tu próximo hit.</p>
+            <p class="price">$30.00 USD</p>
+            <button class="btn">Comprar Licencia 💖</button>
+        </div>
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=500" alt="Trap Latino">
+            <h3>Trap Latino Mágico</h3>
+            <p class="desc">Sonido atmosférico y comercial.</p>
+            <p class="price">$20.00 USD</p>
+            <button class="btn">Comprar Licencia 💖</button>
+        </div>
+    </div>
+
+    <h2 id="libros" class="section-title">✨ Librería J4S ✨</h2>
+    <div class="grid-container">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=500" alt="Libro Soy el crush de mi crush">
+            <h3>Soy el crush de mi crush</h3>
+            <p class="desc">E-book exclusivo. Psicología y marketing personal.</p>
+            <p class="price">$12.00 USD</p>
+            <button class="btn">Al Carrito 🛒</button>
+        </div>
+    </div>
+
+    <h2 id="redes" class="section-title">🌟 Conecta con Nosotros 🌟</h2>
+    <div class="social-container">
+        <a href="https://open.spotify.com/artist/6Fbi5wFxLyxaNDAc306h3K?si=Akq4S5J-SPydGnwH-fMEeQ" target="_blank" class="social-btn">
+            🟢 Spotify
+        </a>
+        <a href="https://youtube.com/@j4smusicrecords?si=rUtieqaEAe1lABjH" target="_blank" class="social-btn">
+            🔴 YouTube
+        </a>
+        <a href="https://www.instagram.com/jas_musicrecords?igsh=MThxYWZ1ZWs0YWl2bA%3D%3D&utm_source=qr" target="_blank" class="social-btn">
+            🟣 Instagram
+        </a>
+        <a href="https://www.facebook.com/share/18qXjwysxf/?mibextid=wwXIfr" target="_blank" class="social-btn">
+            🔵 Facebook (Página 1)
+        </a>
+        <a href="https://www.facebook.com/share/17WpmDMbyb/?mibextid=wwXIfr" target="_blank" class="social-btn">
+            🔵 Facebook (Página 2)
+        </a>
+    </div>
+
+    <footer>
+        <h2>J4S Music Records 🌸</h2>
+        <p style="margin: 10px 0; font-size: 1.1rem;">Magangué, Bolívar - Colombia</p>
+        <p>&copy; 2026 J4S Music Records. Hecho con amor.</p>
+    </footer>
+
+</body>
+</html>
